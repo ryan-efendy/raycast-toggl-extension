@@ -1,19 +1,16 @@
 #!/usr/bin/env node
-
-import dotenv from 'dotenv'
-const result = dotenv.config()
-
+import 'dotenv/config'
 import fetch from 'node-fetch'; 
 const URL = 'https://api.track.toggl.com/api/v8/time_entries/start';
 
-export function startTimer(projectID, projectName, desc){
+export function startTimer(WORKSPACE_ID, desc){
   fetch(URL, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + btoa(`${process.env.API_TOKEN}:api_token`)
+        'Authorization': `Basic ${btoa(`${process.env.API_TOKEN}:api_token`)}`
     },
-    body: JSON.stringify({"time_entry":{"description":`${desc}`,"pid":projectID,"created_with":"RayCast"}})
+    body: JSON.stringify({"time_entry":{"description":`${desc}`,"wid":WORKSPACE_ID,"created_with":"raycast"}})
     })
     .then((response) => {
       if (!response.ok) {
@@ -22,7 +19,7 @@ export function startTimer(projectID, projectName, desc){
       return response.json();
     })
     .then((data) => {
-      console.log(`⏲️: ${projectName} timer started`);
+      console.log(`⏲️: ${desc} timer started`);
     })
     .catch((error) => {
       console.error('There has been a problem with your fetch operation:', error);
