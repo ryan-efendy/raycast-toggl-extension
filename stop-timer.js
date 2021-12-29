@@ -2,7 +2,7 @@
 
 // Required parameters:
 // @raycast.schemaVersion 1
-// @raycast.title Stop Toggl Timer
+// @raycast.title Toggl stop timer
 // @raycast.mode compact
 
 // Optional parameters:

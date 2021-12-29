@@ -2,7 +2,7 @@
 
 // Required parameters:
 // @raycast.schemaVersion 1
-// @raycast.title Start Toggle Timer
+// @raycast.title Toggl start timer
 // @raycast.mode compact
 
 // Optional parameters:
